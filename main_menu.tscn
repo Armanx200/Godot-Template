@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://77wyu7kxggb"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_144yc"]
+[ext_resource type="AudioStream" uid="uid://bm733rh75573r" path="res://Kingdom Dance-Alan Menken 128.mp3" id="2_4dwl8"]
+[ext_resource type="Texture2D" uid="uid://c0ecqx6b1dqw" path="res://BG.png" id="2_f6e0k"]
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_144yc")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f6e0k")
+expand_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4dwl8")
+volume_db = 5.262
+autoplay = true
+parameters/looping = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -180.0
+offset_right = 100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+flat = true
+
+[node name="Load_Game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+flat = true
+
+[node name="New_Game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+flat = true
+
+[node name="System" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "System"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -31.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Version" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "v0.01
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/New_Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/System" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
